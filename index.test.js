@@ -10,9 +10,11 @@ const Game = require('./Game');
 const context = describe;
 
 describe('wordle', () => {
-  test('word has five letters', () => {
-    expect(() => new Word('app')).toThrow('5글자여야만 합니다.');
-    expect(new Word('apple')).toBeDefined();
+  test('word should have length of five', () => {
+    const ERROR_MESSAGE = '5글자여야만 합니다.';
+
+    expect(() => new Word('app')).toThrowError(new Error(ERROR_MESSAGE));
+    expect(() => new Word('apple')).not.toThrowError(new Error(ERROR_MESSAGE));
   });
 
   test('check if the word is in the word list.', () => {
