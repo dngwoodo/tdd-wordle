@@ -13,8 +13,15 @@ describe('wordle', () => {
   test('word should have length of five', () => {
     const ERROR_MESSAGE = '5글자여야만 합니다.';
 
-    expect(() => new Word('app')).toThrowError(new Error(ERROR_MESSAGE));
     expect(() => new Word('apple')).not.toThrowError(new Error(ERROR_MESSAGE));
+  });
+
+  context('with word less or more than length of five', () => {
+    it('it prompts an Error Message "5글자"', () => {
+      const ERROR_MESSAGE = '5글자여야만 합니다.';
+
+      expect(() => new Word('app')).toThrowError(new Error(ERROR_MESSAGE));
+    });
   });
 
   test('check if the word is in the word list.', () => {
