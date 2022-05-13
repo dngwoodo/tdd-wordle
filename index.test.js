@@ -68,4 +68,16 @@ describe('wordle', () => {
       });
     });
   });
+
+  describe('findeGrayPositionsFor', () => {
+    context('answer 에 guess 의 letter가 포함되지 않는다면', () => {
+      it('해당 positions들을 반환한다.', () => {
+        const answer = new Word('apple');
+
+        const game = new Game(answer);
+
+        expect(game.findGrayPositionsFor(new Word('xxxxx'))).toEqual([0, 1, 2, 3, 4]);
+      });
+    });
+  });
 });
